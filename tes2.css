@@ -1,0 +1,416 @@
+@font-face {
+    font-family: 'WeddingStarlight';
+    src: url('Wedding in the Starlight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    color: #fff;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: #000;
+    touch-action: manipulation;
+}
+
+.scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.scene.active {
+    display: flex;
+    z-index: 100;
+}
+
+/* EFEK MEMUDAR (FADE TRANSITION) */
+.scene.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* STYLING TOMBOL NAVIGASI UMUM */
+.scene-nav-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-nav-action {
+    padding: 8px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-nav-action:active {
+    transform: scale(0.92);
+}
+
+.btn-nav-action.primary {
+    background: #0984e3;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3);
+}
+
+.btn-nav-action.secondary {
+    background: rgba(255, 255, 255, 0.85);
+    color: #2d3436;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* EFEK HUJAN */
+.rain-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1;
+}
+
+.drop {
+    position: absolute; background: rgba(255, 255, 255, 0.6);
+    width: 2px; height: 20px; animation: fall 0.8s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-30px); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0.2; }
+}
+
+/* SCENE 1 */
+#scene-1 {
+    background: linear-gradient(180deg, #74b9ff 0%, #a1c4fd 100%);
+    overflow: hidden;
+}
+
+.pin-card {
+    position: relative; z-index: 20; background: #ffffff;
+    width: 270px; padding: 30px 20px 25px 20px; border-radius: 30px;
+    display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); color: #2d3436;
+}
+
+.pin-icon-box {
+    width: 75px; height: 75px; background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+    border-radius: 22px; display: flex; justify-content: center; align-items: center;
+    font-size: 38px; margin-bottom: 15px; box-shadow: 0 6px 15px rgba(253, 203, 110, 0.4);
+}
+
+.pin-title { font-family: 'Pacifico', cursive; font-size: 22px; color: #2d3436; margin-bottom: 20px; }
+.dots-container { display: flex; gap: 12px; margin-bottom: 25px; }
+
+.dot {
+    width: 12px; height: 12px; border: 2px solid #b2bec3;
+    border-radius: 50%; transition: all 0.2s ease;
+}
+
+.dot.filled {
+    background-color: #0984e3; border-color: #0984e3;
+    box-shadow: 0 0 8px rgba(9, 132, 227, 0.5);
+}
+
+.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 230px; }
+
+.key-btn {
+    background: #f1f2f6; color: #2d3436; border: none; border-radius: 14px;
+    height: 48px; font-size: 18px; font-weight: 600; font-family: 'Poppins', sans-serif;
+    cursor: pointer; display: flex; justify-content: center; align-items: center;
+    transition: background 0.15s, transform 0.1s; -webkit-tap-highlight-color: transparent;
+}
+
+.key-btn:active { background: #dfe4ea; transform: scale(0.92); }
+.del-btn { font-size: 16px; color: #636e72; background: transparent; }
+.enter-btn { background: #0984e3; color: #ffffff; font-size: 20px; font-weight: bold; box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3); }
+
+/* SCENE 2 */
+#scene-2 { background-color: #120a05; }
+.player-card {
+    background-color: #0d0d0d; width: 310px; padding: 25px 20px 20px 20px;
+    border-radius: 20px; display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.08);
+}
+
+.vinyl-container { position: relative; width: 150px; height: 150px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; }
+.vinyl {
+    width: 140px; height: 140px;
+    background: repeating-radial-gradient(circle, #181818, #181818 3px, #282828 4px, #111 5px);
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8); animation: spin 3s linear infinite; animation-play-state: paused;
+}
+
+.vinyl-center { width: 40px; height: 40px; background-color: #1ed760; border-radius: 50%; border: 5px solid #111; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.needle {
+    position: absolute; top: -5px; right: 25px; width: 6px; height: 55px;
+    background: #b3b3b3; border-radius: 3px; transform-origin: top right;
+    transform: rotate(-28deg); transition: transform 0.5s ease; z-index: 3;
+}
+
+.now-playing { font-size: 11px; color: #1ed760; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 5px; }
+.song-title-main { font-size: 20px; font-weight: 700; margin: 0; color: #fff; text-align: center; }
+.song-artist-main { font-size: 12px; color: #b3b3b3; margin: 2px 0 12px 0; }
+
+.player-controls { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; padding: 0 10px; box-sizing: border-box; }
+.ctrl-icon { font-size: 16px; color: #b3b3b3; cursor: pointer; }
+
+.btn-play-circle {
+    width: 46px; height: 46px; background-color: #1ed760; border-radius: 50%;
+    border: none; color: #000; font-size: 18px; display: flex; justify-content: center;
+    align-items: center; cursor: pointer;
+}
+
+.progress-container { width: 100%; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.time-text { font-size: 10px; color: #b3b3b3; width: 28px; }
+.bar-bg { flex: 1; height: 4px; background-color: #404040; border-radius: 2px; overflow: hidden; }
+.bar-fill { width: 0%; height: 100%; background-color: #1ed760; transition: width 0.2s linear; }
+
+.equalizer { display: flex; gap: 4px; height: 15px; align-items: flex-end; margin-bottom: 12px; }
+.eq-bar { width: 3px; height: 4px; background-color: #1ed760; border-radius: 2px; }
+
+.playing .vinyl { animation-play-state: running; }
+.playing .needle { transform: rotate(0deg); }
+.playing .eq-bar:nth-child(1) { animation: bounce 0.6s infinite alternate; }
+.playing .eq-bar:nth-child(2) { animation: bounce 0.8s infinite alternate 0.2s; }
+.playing .eq-bar:nth-child(3) { animation: bounce 0.5s infinite alternate 0.4s; }
+.playing .eq-bar:nth-child(4) { animation: bounce 0.7s infinite alternate 0.1s; }
+.playing .eq-bar:nth-child(5) { animation: bounce 0.9s infinite alternate 0.3s; }
+
+@keyframes bounce { 0% { height: 4px; } 100% { height: 16px; } }
+
+/* SCENE 3 */
+#scene-3 { background-color: #fff6e5; transition: background-color 2s ease; }
+#scene-3.dark-mode { background-color: #120a05; }
+
+.judul-gede {
+    font-family: 'Bangers', cursive; font-size: 45px; color: #ffda79;
+    letter-spacing: 3px; text-shadow: 3px 3px 0 #5c3a21, 5px 5px 10px rgba(0,0,0,0.5);
+    margin-bottom: 20px; text-align: center;
+}
+
+.cake-container {
+    position: relative; margin-bottom: 25px; cursor: pointer;
+    width: 220px; height: 120px; display: flex; justify-content: center; align-items: flex-end;
+}
+
+.piring { position: absolute; bottom: -5px; width: 220px; height: 20px; background-color: #f1f2f6; border-radius: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); z-index: 1; }
+.cake { width: 180px; height: 90px; background-color: #ffffff; border-radius: 10px 10px 0 0; position: relative; box-shadow: inset 0 -15px rgba(0,0,0,0.1); z-index: 2; transition: clip-path 0.3s ease-in-out, opacity 0.3s ease; }
+
+.strawberry { width: 22px; height: 28px; background-color: #ff4757; position: absolute; top: -12px; border-radius: 50% 50% 45% 45%; transition: opacity 0.2s; }
+.strawberry::after { content: ''; position: absolute; top: -3px; left: 3px; width: 16px; height: 6px; background-color: #2ed573; border-radius: 5px; }
+.s1 { left: 15px; } .s2 { left: 55px; } .s3 { left: 105px; } .s4 { left: 145px; }
+
+.candle {
+    width: 15px; height: 50px;
+    background: repeating-linear-gradient(45deg, #fff, #fff 5px, #74b9ff 5px, #74b9ff 10px);
+    position: absolute; top: -50px; left: 82.5px; border-radius: 3px; z-index: 10; cursor: pointer;
+}
+
+.flame {
+    width: 15px; height: 25px; background-color: #ffa502;
+    position: absolute; top: -25px; left: 0; border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #ff7f50, 0 0 30px #ffa502; opacity: 0; transition: opacity 0.4s ease-in-out; pointer-events: none;
+}
+
+.flame.menyala { opacity: 1; animation: berkedip 0.5s infinite alternate; }
+@keyframes berkedip { 0% { transform: scale(1); } 100% { transform: scale(1.1); opacity: 0.9; } }
+
+.cake.bite-1 { clip-path: polygon(0 0, 75% 0, 70% 20%, 82% 40%, 75% 65%, 85% 85%, 70% 100%, 0 100%); }
+.cake.bite-1 .s4 { opacity: 0; }
+.cake.bite-2 { clip-path: polygon(0 0, 40% 0, 35% 25%, 45% 45%, 38% 70%, 48% 100%, 0 100%); }
+.cake.bite-2 .s3, .cake.bite-2 .candle { opacity: 0; }
+.cake.bite-3 { opacity: 0; pointer-events: none; }
+
+.crumbs { position: absolute; bottom: 12px; display: none; z-index: 3; font-size: 14px; }
+.crumbs.show { display: block; }
+
+.teks-petunjuk-kue { font-size: 13px; color: #ffda79; margin-bottom: 15px; letter-spacing: 1px; text-align: center; background: rgba(0,0,0,0.3); padding: 6px 16px; border-radius: 20px; }
+.teks-ultah { font-family: 'WeddingStarlight', cursive, sans-serif; font-size: 30px; text-align: center; margin-bottom: 15px; color: #ffe6cc; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+
+/* SCENE 4 */
+#scene-4 { background-color: #0d0703; padding: 20px; box-sizing: border-box; perspective: 1000px; }
+
+.vintage-note {
+    background: #d8be8a;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(243, 227, 194, 0.8) 20%, transparent 80%),
+        radial-gradient(circle at 10% 20%, rgba(101, 58, 20, 0.35) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(101, 58, 20, 0.4) 0%, transparent 45%),
+        linear-gradient(to right, rgba(92, 48, 12, 0.25), transparent 10%, transparent 90%, rgba(92, 48, 12, 0.25));
+    width: 88%; max-width: 350px; min-height: 440px; padding: 25px 20px 20px 20px;
+    box-sizing: border-box; border-radius: 4px; box-shadow: inset 0 0 50px rgba(78, 42, 12, 0.5), 0 25px 50px rgba(0, 0, 0, 0.8);
+    border: 1px solid #aa8b56; color: #311c0c; display: flex; flex-direction: column;
+    justify-content: space-between; position: relative;
+}
+
+.note-header { font-family: 'Pacifico', cursive; font-size: 20px; color: #4a2912; border-bottom: 2px dashed #a58352; padding-bottom: 8px; margin-bottom: 12px; }
+.note-body { font-family: 'Caveat', cursive; font-size: 21px; line-height: 1.4; color: #2b1709; max-height: 280px; overflow-y: auto; }
+
+/* SCENE 5: SCRAPBOOK */
+#scene-5 { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); position: relative; overflow: hidden; perspective: 1500px; }
+.book-container { width: 90%; max-width: 360px; height: 540px; position: relative; z-index: 5; transform-style: preserve-3d; }
+.book-spine-rings { position: absolute; top: 20px; left: -12px; height: 90%; display: flex; flex-direction: column; justify-content: space-around; z-index: 20; pointer-events: none; }
+.ring { width: 24px; height: 10px; background: linear-gradient(180deg, #dcdde1, #718093); border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.4); }
+
+.scrapbook-page {
+    position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+    background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1.5px solid rgba(255, 255, 255, 0.4); border-radius: 20px; padding: 20px 15px;
+    box-sizing: border-box; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+    transform-origin: left center; transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
+    backface-visibility: hidden;
+}
+
+#page-1 { z-index: 15; } #page-2 { z-index: 10; } #page-3 { z-index: 5; }
+
+.book-container.page-2-active #page-1 { transform: rotateY(-180deg); pointer-events: none; }
+.book-container.page-3-active #page-1, .book-container.page-3-active #page-2 { transform: rotateY(-180deg); pointer-events: none; }
+
+.scrapbook-title { font-family: 'Sacramento', cursive; font-size: 36px; color: #ffffff; margin: 0 0 5px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); text-align: center; }
+.polaroid-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+
+.polaroid-frame {
+    background: #ffffff; padding: 6px 6px 14px 6px; border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); position: relative;
+    display: flex; flex-direction: column; align-items: center; box-sizing: border-box; transition: transform 0.3s;
+}
+
+.polaroid-frame.full-width { grid-column: span 2; width: 85%; justify-self: center; }
+.tape-accent { position: absolute; top: -8px; width: 45px; height: 14px; background: rgba(255, 255, 255, 0.7); border: 1px dashed rgba(0, 0, 0, 0.15); transform: rotate(-4deg); z-index: 5; }
+.polaroid-img { width: 100%; height: 95px; object-fit: cover; border-radius: 2px; background-color: #dfe6e9; }
+.polaroid-caption { font-family: 'Caveat', cursive; font-size: 14px; color: #2d3436; margin-top: 4px; text-align: center; font-weight: 600; }
+
+.quote-glass {
+    background: rgba(255, 255, 255, 0.3); border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff; padding: 8px 12px; border-radius: 12px; font-size: 11px; font-style: italic;
+    text-align: center; line-height: 1.4; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); width: 100%; box-sizing: border-box;
+}
+
+.square-polaroid { width: 160px; padding: 8px 8px 16px 8px; transform: rotate(-2deg); }
+.square-img { width: 140px; height: 140px; }
+
+.envelope-box {
+    width: 200px; height: 100px; background: #ff7675; border-radius: 12px;
+    position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.25); cursor: pointer;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    border: 2px solid #fd79a8; transition: transform 0.2s ease;
+}
+.envelope-box:active { transform: scale(1.05); }
+.envelope-top { position: absolute; top: 0; width: 0; height: 0; border-left: 100px solid transparent; border-right: 100px solid transparent; border-top: 50px solid #d63031; }
+.envelope-paper { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; margin-top: 20px; }
+.envelope-heart { font-size: 24px; animation: pulse 1.5s infinite alternate; }
+.envelope-tap-text { font-size: 10px; font-weight: 700; color: #ffffff; margin-top: 2px; background: rgba(0,0,0,0.2); padding: 3px 8px; border-radius: 10px; }
+
+/* MODAL SURAT */
+.letter-modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); display: none;
+    justify-content: center; align-items: center; z-index: 200; opacity: 0; transition: opacity 0.4s ease;
+}
+.letter-modal-overlay.active { display: flex; opacity: 1; }
+
+.letter-modal-content {
+    background: #fff6e5; background-image: radial-gradient(#ffeaa7 1px, transparent 1px); background-size: 15px 15px;
+    width: 88%; max-width: 380px; padding: 25px 20px; border-radius: 20px; border: 3px solid #fdcb6e;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5); color: #2d3436; display: flex; flex-direction: column;
+    align-items: center; transform: scale(0.8); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.letter-modal-overlay.active .letter-modal-content { transform: scale(1); }
+
+.modal-letter-header { font-family: 'Pacifico', cursive; font-size: 20px; color: #d63031; margin-bottom: 12px; }
+.modal-letter-body { font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.45; color: #2d3436; text-align: center; margin-bottom: 15px; }
+
+.btn-modal-next {
+    background: #d63031; color: #ffffff; border: none; padding: 10px 20px;
+    border-radius: 25px; font-size: 13px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 6px 15px rgba(214, 48, 49, 0.4); transition: transform 0.2s;
+}
+.btn-modal-next:active { transform: scale(0.92); }
+
+/* SCENE 6: MARIO GAME */
+#scene-6 { background: #5c94fc; font-family: 'Press Start 2P', monospace; }
+.mario-game-wrapper { width: 100%; max-width: 380px; display: flex; flex-direction: column; align-items: center; }
+.mario-hud { width: 100%; display: flex; justify-content: space-around; font-size: 10px; color: #ffffff; text-shadow: 2px 2px #000; margin-bottom: 10px; text-align: center; }
+
+#mario-canvas { background: #5c94fc; border: 4px solid #000; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-radius: 4px; width: 360px; height: 220px; }
+.mario-controls { width: 360px; display: flex; justify-content: space-between; margin-top: 15px; padding: 0 5px; box-sizing: border-box; }
+.dpad { display: flex; gap: 10px; }
+
+.mario-btn {
+    background: #e74c3c; color: #fff; border: 3px solid #000; border-radius: 8px;
+    width: 55px; height: 52px; font-size: 16px; font-weight: bold; cursor: pointer;
+    box-shadow: 0 4px #000; display: flex; justify-content: center; align-items: center;
+    user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.mario-btn:active { box-shadow: 0 0 #000; transform: translateY(4px); background: #c0392b; }
+.jump-btn { width: 120px; background: #2ecc71; font-size: 11px; font-family: 'Press Start 2P', monospace; }
+.jump-btn:active { background: #27ae60; }
+
+.mario-popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 300; }
+.mario-popup-overlay.active { display: flex; }
+.mario-popup-card { background: #000; border: 4px solid #fff; padding: 25px 18px; border-radius: 16px; text-align: center; width: 88%; max-width: 320px; color: #fff; box-shadow: 0 0 25px rgba(255,255,255,0.25); box-sizing: border-box; }
+
+#mario-popup-icon { font-size: 45px; margin-bottom: 5px; animation: pulse 1s infinite alternate; }
+@keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+
+#mario-popup-title { font-family: 'Pacifico', cursive; font-size: 22px; color: #ff7675; margin: 10px 0; }
+#mario-popup-sub { font-family: 'Poppins', sans-serif; font-size: 12px; color: #dfe6e9; margin-bottom: 20px; line-height: 1.4; }
+
+.mario-popup-actions { display: flex; gap: 10px; justify-content: center; width: 100%; }
+.btn-mario-action { flex: 1; padding: 10px 12px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: bold; border-radius: 20px; cursor: pointer; transition: transform 0.15s; border: 2px solid #fff; }
+.btn-mario-action:active { transform: scale(0.92); }
+.btn-mario-action.primary { background: #ff7675; color: #fff; }
+.btn-mario-action.secondary { background: #6c5ce7; color: #fff; }
+
+/* SCENE 7 & SCENE 8 */
+#scene-7, #scene-8 { background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%); }
+
+.final-card {
+    background: rgba(255, 255, 255, 0.92); color: #2d3436;
+    width: 85%; max-width: 320px; padding: 25px 20px;
+    border-radius: 25px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.final-heart-icon { font-size: 45px; margin-bottom: 10px; animation: pulse 1.2s infinite alternate; }
+.final-title { font-family: 'Pacifico', cursive; color: #d63031; font-size: 22px; margin-bottom: 12px; }
+.final-text { font-family: 'Poppins', sans-serif; font-size: 12px; line-height: 1.6; color: #636e72; margin-bottom: 15px; }
+
+.btn-extra-surprise {
+    background: linear-gradient(135deg, #ff7675, #d63031);
+    color: #ffffff; border: none; padding: 10px 16px;
+    border-radius: 25px; font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 6px 15px rgba(214, 48, 49, 0.4);
+    transition: transform 0.2s;
+}
+.btn-extra-surprise:active { transform: scale(0.92); }
+
+.final-footer { font-family: 'Caveat', cursive; font-size: 20px; color: #d63031; font-weight: bold; }

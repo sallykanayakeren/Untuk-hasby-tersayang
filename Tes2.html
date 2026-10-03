@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Untuk Hasby ✨</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Pacifico&family=Poppins:wght@400;600;700&family=Caveat:wght@600&family=Press+Start+2P&family=Sacramento&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="tes2.css">
+</head>
+<body>
+
+    <!-- AUDIO PLAYER ELEMENT -->
+    <audio id="lagu-ultah" src="wby.mp3" loop></audio>
+    <audio id="lagu-game" src="marioo.mp3" loop></audio>
+
+    <!-- SCENE 1: SKY & PIN CARD -->
+    <div id="scene-1" class="scene active">
+        <div class="rain-container" id="rain-box-1"></div>
+
+        <div class="pin-card">
+            <div class="pin-icon-box">☀️</div>
+            <div class="pin-title">our favorite day ✨</div>
+            
+            <div class="dots-container">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <div class="keypad">
+                <button type="button" class="key-btn num-btn" data-val="1">1</button>
+                <button type="button" class="key-btn num-btn" data-val="2">2</button>
+                <button type="button" class="key-btn num-btn" data-val="3">3</button>
+                <button type="button" class="key-btn num-btn" data-val="4">4</button>
+                <button type="button" class="key-btn num-btn" data-val="5">5</button>
+                <button type="button" class="key-btn num-btn" data-val="6">6</button>
+                <button type="button" class="key-btn num-btn" data-val="7">7</button>
+                <button type="button" class="key-btn num-btn" data-val="8">8</button>
+                <button type="button" class="key-btn num-btn" data-val="9">9</button>
+                <button type="button" class="key-btn del-btn" id="btn-del">⌫</button>
+                <button type="button" class="key-btn num-btn" data-val="0">0</button>
+                <button type="button" class="key-btn enter-btn" id="btn-enter">➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCENE 2: MUSIC PLAYER VINYL -->
+    <div id="scene-2" class="scene">
+        <div class="player-card" id="player-card">
+            <div class="vinyl-container">
+                <div class="needle"></div>
+                <div class="vinyl"><div class="vinyl-center"></div></div>
+            </div>
+
+            <div class="now-playing">● SEKARANG LAGI MEMUTAR</div>
+            <h2 class="song-title-main">Sudah Be Yours</h2>
+            <p class="song-artist-main">Arctic Monkeys</p>
+
+            <div class="player-controls">
+                <span class="ctrl-icon">🔀</span>
+                <span class="ctrl-icon">⏮</span>
+                <button type="button" class="btn-play-circle" id="btn-play">▶</button>
+                <span class="ctrl-icon">⏭</span>
+                <span class="ctrl-icon">🔁</span>
+            </div>
+
+            <div class="progress-container">
+                <span class="time-text" id="curr-time">0:00</span>
+                <div class="bar-bg"><div class="bar-fill" id="bar-fill"></div></div>
+                <span class="time-text" id="dur-time">3:04</span>
+            </div>
+
+            <div class="equalizer">
+                <div class="eq-bar"></div><div class="eq-bar"></div>
+                <div class="eq-bar"></div><div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+            </div>
+
+            <div class="scene-nav-buttons">
+                <button type="button" class="btn-nav-action secondary" id="btn-back-scene-2">⏮ Kembali</button>
+                <button type="button" class="btn-nav-action primary" id="btn-skip">Lanjut ➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCENE 3: KUE ULANG TAHUN -->
+    <div id="scene-3" class="scene">
+        <div class="judul-gede">HASBY'S DAY</div>
+        
+        <div class="teks-petunjuk-kue" id="petunjuk-kue">🕯️ Tiup lilinnya ya sayang!</div>
+
+        <div class="cake-container" id="area-kue">
+            <div class="piring"></div>
+            <div class="crumbs" id="crumbs-kue">🍰 🍪 💥 (Nyam! nyam!habis kuenya)</div>
+            
+            <div class="cake" id="objek-kue">
+                <div class="strawberry s1"></div>
+                <div class="strawberry s2"></div>
+                <div class="strawberry s3"></div>
+                <div class="strawberry s4"></div>
+                
+                <div class="candle" id="lilin">
+                    <div class="flame menyala" id="api-lilin"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="teks-ultah">happy birthday hasby ku tersayang</div>
+        
+        <div class="scene-nav-buttons">
+            <button type="button" class="btn-nav-action secondary" id="btn-back-scene-3">⏮ Kembali</button>
+            <button type="button" class="btn-nav-action primary" id="btn-lanjut">Lanjut ➔</button>
+        </div>
+    </div>
+
+    <!-- SCENE 4: VINTAGE LETTER -->
+    <div id="scene-4" class="scene">
+        <div class="vintage-note">
+            <div class="note-content-wrapper" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                <div>
+                    <div class="note-header">Untuk hasbyku🤍</div>
+                    <div class="note-body">
+                         Sweet seventeen bocilll akuu ✨1️⃣7️⃣‼️🎉✨<br><br>
+                        Aku berharap dengan beranjak nya usia, kebahagiaan selalu datang di kehidupan kamu, semua yang kamu cita-citakan dapat tercapai, dan selalu diberi kesehatan dan keberuntungan di setiap langkah mu✨✨. Bahagia selalu cintaakuu<br><br>
+                        I'm so grateful to have you in my life. I love you so much! 💛
+                    </div>
+                </div>
+                
+                <div class="scene-nav-buttons" style="margin-top: 15px;">
+                    <button type="button" class="btn-nav-action secondary" id="btn-back-scene-4">⏮ Kembali</button>
+                    <button type="button" class="btn-nav-action primary" id="btn-next-stage">Lanjut ➔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCENE 5: SCRAPBOOK BUKU BENING (3 HALAMAN) -->
+    <div id="scene-5" class="scene">
+        <div class="rain-container" id="rain-box-2"></div>
+
+        <div class="book-container" id="book-scrapbook">
+            <div class="book-spine-rings">
+                <div class="ring"></div><div class="ring"></div>
+                <div class="ring"></div><div class="ring"></div>
+                <div class="ring"></div><div class="ring"></div>
+            </div>
+
+            <!-- HALAMAN 1 -->
+            <div class="scrapbook-page" id="page-1">
+                <div class="scrapbook-title">About You 💛</div>
+
+                <div class="polaroid-grid">
+                    <div class="polaroid-frame" style="transform: rotate(-3deg);">
+                        <div class="tape-accent"></div>
+                        <img src="kalender.jpg" alt="Kalender" class="polaroid-img">
+                        <div class="polaroid-caption">October 🗓</div>
+                    </div>
+
+                    <div class="polaroid-frame" style="transform: rotate(3deg);">
+                        <div class="tape-accent"></div>
+                        <img src="foto pertama.jpg" alt="Foto Hasby 1" class="polaroid-img">
+                        <div class="polaroid-caption">pap hasby pertama kali</div>
+                    </div>
+                </div>
+
+                <div class="polaroid-frame full-width" style="transform: rotate(-1deg);">
+                    <img src="hasby juga.jpg" alt="Foto Hasby 2" class="polaroid-img" style="height: 100px;">
+                    <div class="polaroid-caption">Lovee✨</div>
+                </div>
+
+                <div class="quote-glass">
+                    "hal paling beruntung dalam hidup ku adalah bisa mengenal mu."
+                </div>
+
+                <div class="scene-nav-buttons">
+                    <button type="button" class="btn-nav-action secondary" id="btn-back-scene-5-p1">⏮ Kembali</button>
+                    <button type="button" class="btn-nav-action primary" id="btn-next-page-1">Lanjut ➔</button>
+                </div>
+            </div>
+
+            <!-- HALAMAN 2 -->
+            <div class="scrapbook-page" id="page-2">
+                <div class="scrapbook-title">About us💕</div>
+
+                <div class="mini-book-container">
+                    <span class="floating-love love-1">💖</span>
+                    <span class="floating-love love-2">💕</span>
+
+                    <div class="open-mini-book">
+                        <div class="mini-page page-left">
+                            <div class="mini-polaroid polaroid-left">
+                                <span class="mini-tape">🎀</span>
+                                <img src="kita.jpg" alt="Foto 1" class="polaroid-img">
+                            </div>
+                        </div>
+
+                        <div class="mini-book-spine"></div>
+
+                        <div class="mini-page page-right">
+                            <div class="mini-polaroid polaroid-right">
+                                <span class="mini-tape">🎀</span>
+                                <img src="kita2.jpg" alt="Foto 2" class="polaroid-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="love-badge-container">
+                    <div class="heart-badge-icon">💖</div>
+                    <div class="love-badge-text">YOU ARE MY EVERYTHING ✨</div>
+                </div>
+
+                <div class="quote-glass" style="font-size: 11px; padding: 6px 10px;">
+                    Terima kasih sudah selalu ada di setiap hari hari ku(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)⁠❤
+                </div>
+
+                <div class="scene-nav-buttons">
+                    <button type="button" class="btn-nav-action secondary" id="btn-prev-page-2">⏮ Kembali</button>
+                    <button type="button" class="btn-nav-action primary" id="btn-next-page-2">Lanjut ➔</button>
+                </div>
+            </div>
+
+            <!-- HALAMAN 3 -->
+            <div class="scrapbook-page" id="page-3">
+                <div class="scrapbook-title">Moch Hasby Alvarro</div>
+
+                <div class="polaroid-frame square-polaroid">
+                    <div class="tape-accent"></div>
+                    <img src="hasbykecil1.jpg" alt="Foto Hasby Square" class="polaroid-img square-img">
+                    <div class="polaroid-caption">Terimakasih sudah lahir di dunia ini</div>
+                </div>
+
+                <div class="envelope-box" id="envelope-btn">
+                    <div class="envelope-top"></div>
+                    <div class="envelope-paper">
+                        <span class="envelope-heart">💌</span>
+                        <div class="envelope-tap-text">Buka amplop^^</div>
+                    </div>
+                </div>
+
+                <div class="scene-nav-buttons">
+                    <button type="button" class="btn-nav-action secondary" id="btn-prev-page-3">⏮ Kembali</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FULLSCREEN LETTER MODAL -->
+        <div class="letter-modal-overlay" id="letter-modal">
+            <div class="letter-modal-content">
+                <div class="modal-letter-header">Untuk Hasby ku tersayang💌</div>
+                <div class="modal-letter-body">
+                    Hayyiee cowo akuu!<br><br>
+                    Selamat bertambah usia bocil aku (hehe aku ucapin lagi), terimakasih atas segala hal yang sudah kamu lewati sampai detik ini, kamu lebih hebat dari yang kamu kira.Jangan lupa sayangi diri mu sendiri ya!<br><br>
+                    Aku punya game kecil kecilan buat kamu kidz, pernah ga ready?🚀🎮
+                </div>
+                <button type="button" class="btn-modal-next" id="btn-start-game">Lanjut ke Game 🎮</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCENE 6: GAME MARIO BROS / CHICKEN RUN 8-BIT -->
+    <div id="scene-6" class="scene">
+        <div class="mario-game-wrapper">
+            <div class="mario-hud">
+                <div class="hud-item">HERO<br>🐤 CHICK</div>
+                <div class="hud-item">LIVES<br><span id="mario-lives">❤️❤❤️</span></div>
+                <div class="hud-item">WORLD<br>1-1</div>
+            </div>
+
+            <canvas id="mario-canvas" width="360" height="220"></canvas>
+
+            <!-- KONTROL GAME -->
+            <div class="mario-controls">
+                <div class="dpad">
+                    <button type="button" class="mario-btn" id="mario-left">◀</button>
+                    <button type="button" class="mario-btn" id="mario-right">▶</button>
+                </div>
+                <button type="button" class="mario-btn jump-btn" id="mario-jump">LOMPAT ⬆</button>
+            </div>
+
+            <div class="scene-nav-buttons" style="margin-top: 15px; width: 100%;">
+                <button type="button" class="btn-nav-action secondary" id="btn-back-scene-6">⏮ Kembali ke Scrapbook</button>
+            </div>
+        </div>
+
+        <!-- POPUP HASIL / WIN / FAIL MODAL -->
+        <div class="mario-popup-overlay" id="mario-popup">
+            <div class="mario-popup-card">
+                <div id="mario-popup-icon">💖</div>
+                <h3 id="mario-popup-title">hebatt banget wuy bocil, ini love dari aku</h3>
+                <p id="mario-popup-sub">WOWOWO keren bangett! proud of uuu ✨</p>
+                
+                <div class="mario-popup-actions" id="popup-actions-container">
+                    <button type="button" class="btn-mario-action secondary" id="btn-mario-replay">Main Game Lagi 🔄</button>
+                    <button type="button" class="btn-mario-action primary" id="btn-mario-next">Lanjut ➔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCENE 7: PESAN PENUTUP DENGAN TOMBOL KE KEJUTAN FOTO -->
+    <div id="scene-7" class="scene">
+        <div class="final-card">
+            <div class="final-heart-icon">💖</div>
+            <h2 class="final-title">I Love You So Much!muahh><</h2>
+            <p class="final-text">
+                Semoga hari ulang tahunmu ini menyenangkan ya sayang! Terima kasih sudah memainkan game dan melihat kejutan kecik kecik an ini sampai akhir ✨
+            </p>
+
+            <div class="scene-nav-buttons" style="width: 100%; margin-bottom: 15px;">
+                <button type="button" class="btn-nav-action secondary" id="btn-back-scene-7">⏮ Kembali</button>
+                <button type="button" class="btn-extra-surprise" id="btn-to-scene-8" style="margin-bottom: 0;">Ada sesuatu lagi buat kamu ➔</button>
+            </div>
+
+            <div class="final-footer">Aku sayanggg bangetttt sama hasbyy<33</div>
+        </div>
+    </div>
+
+    <!-- SCENE 8: SPESIAL FOTO & TULISAN AKHIR -->
+    <div id="scene-8" class="scene">
+        <div class="final-card" style="max-width: 330px; padding: 25px 20px;">
+            <div class="polaroid-frame" style="transform: rotate(0deg); width: 100%; box-sizing: border-box; margin-bottom: 15px;">
+                <div class="tape-accent"></div>
+                <img src="hasbykecil2.jpg" alt="Foto Spesial" class="polaroid-img" style="height: 210px; width: 100%; object-fit: cover;">
+                <div class="polaroid-caption">Foto ini sebagai pengingat bahwa banyak sekali hal yang telah hasby lalui di hidup hasby, tentunya semua hal tidak semudah saat bertambah nya usia. Tapi hasby kecil akan sangat bangga melihat diri hasby yang sekarang, selayak nya aku yang selalu bangga dengan hasby. Sekali lagi, selamat bertambah usia sayanggg nya akuu✨</div>
+            </div>
+            
+            <p class="final-text" style="font-size: 13px; margin-bottom: 15px; color: #2d3436; font-weight: 500;">
+                "Aku berharap kamu selalu bahagia" ❤️
+            </p>
+
+            <div class="scene-nav-buttons" style="width: 100%; margin-bottom: 10px;">
+                <button type="button" class="btn-nav-action secondary" id="btn-back-scene-8">⏮ Kembali</button>
+            </div>
+
+            <div class="final-footer">Jangan malu aku masukkin ni foto yaa, gemushhhhhhh╰⁠(⁠*⁠´⁠︶⁠`⁠*⁠)⁠╯</div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="Tes2.js"></script>
+</body>
+</html>
